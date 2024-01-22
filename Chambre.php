@@ -4,12 +4,12 @@
                 private int $prixChambre;
                 private int $nbLit;
                 private bool $optionChambre;
-                private string $statutChambre;
+                private bool $statutChambre;
                 private Hotel $hotel;
                 private array $reservationChambres;
                 
 
-                public function __construct(int $numChambre, int $prixChambre, int $nbLit, bool $optionChambre, string $statutChambre, Hotel $hotel){
+                public function __construct(int $numChambre, int $prixChambre, int $nbLit, bool $optionChambre, bool $statutChambre, Hotel $hotel){
                     $this->numChambre = $numChambre;
                     $this->prixChambre = $prixChambre;
                     $this->nbLit = $nbLit;
@@ -28,16 +28,25 @@
                 public function getPrixChambre(): int {
                     return $this->prixChambre;
                 }
-
+                
                 public function getOptionChambre(): bool {
                     return $this->optionChambre;
                 }
-
-                public function getStatutChambre(): string {
+                
+                public function getStatutChambre(): bool {
                     return $this->statutChambre;
                 }
-
-            
+                
+                
+                public function getReservationChambres()
+                {
+                                return $this->reservationChambres;
+                }
+     
+                
+                public function setReservationChambres($reservationChambres){
+                                $this->reservationChambres = $reservationChambres;
+                }
 
                 public function setNumChambre($numChambre): int {
                     return $this->numChambre = $numChambre;
@@ -132,6 +141,7 @@
                 
 
                 
+
 
 
             }

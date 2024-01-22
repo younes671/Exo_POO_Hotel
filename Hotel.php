@@ -21,7 +21,7 @@
 
             }
 
-           
+          //  Getters & Setters
             public function getEnseigne(){
                         return $this->enseigne;
             }
@@ -88,9 +88,12 @@
                         $this->chambresHotel = $chambresHotel;
             }
 
+            
             public function addChambresHotel(Chambre $chambresHotel){
                 $this->chambresHotel[] = $chambresHotel;
            }
+
+          //  Affiche la disponibilité des chambres de l'hotel
 
            public function getInfoDisponibilite(){
                 if($this->nbChambre < $this->chambresHotel){
@@ -100,19 +103,27 @@
                 }
            }
 
+          //  Affiche titre rubrique 
+
            public function affichageInfoHotel(){
                 echo "<b>Réservations de l'hôtel " . $this . "</b><br>";
            }
 
+          //  Affiche nom hotel 
+
            public function getNomHotel(){
                 echo $this;
            }
+
+          //  Affiche détail de l'hotel
 
            public function getInfoHotel(){
                 echo $this . "<br>" . $this->adresse . " " . $this->cp . " " . strtoupper($this->ville) . "<br> Nombre de chambres : " . $this->nbChambre . 
                 "<br>" . $this->getStatutChambre() . "<br>";
                 
            }
+
+          //  Affiche numéro de chambre 
 
            public function getNumeroChambre(){
                 foreach($this->chambresHotel as $chambreHotel){
@@ -121,11 +132,41 @@
                 
            }
 
+          //  Affiche statut des chambres de l'hotel
+
            public function getStatutChambre(){
                 $result = count($this->chambresHotel);
                 return "Nombre chambres réservées : " . $result . "<br> Nombre chambres dispo : " . $this->nbChambre - $result;
            }
-      
+
+          //  Affiche état chambre 
+
+           public function afficheNumeroChambre(){
+               foreach($this->chambresHotel as $chambreHotel){
+                       $chambreHotel;
+               }
+               
+          }
+
+          // public function afficheDispoChambre(){
+          //      if($this->getStatutChambre()){
+          //           echo "DISPONIBLE";
+          //      }elseif($this->getStatutChambre() == false){
+          //           echo "RESERVEE";
+          //      }
+          // }
+
+          
+
+          public function afficheDispoChambre(){
+               foreach($this->chambresHotel as $chambre){
+                       $dispoChambre = (count($chambre->getReservationChambres()) > 0) ? "<span class ='red'>RESERVEE</span>":"<span class = 'green'>DISPONIBLE</span>";
+                       echo $dispoChambre;
+               } 
+               
+          }
+
+   
             public function __toString(){
                         return "<b>" . $this->enseigne . " " . $this->nbEtoile . " " . $this->ville . "</b><br>"; 
                         

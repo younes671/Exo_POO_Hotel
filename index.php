@@ -8,10 +8,15 @@
         $h1 = new Hotel ("Hilton", "10 rue de la gare", "67200", "Stasbourg", 30, "****");
         $h2 = new Hotel ("Regent", "10 rue de la gare", "67200", "STRASBOURG", 30, "****");
         $h3 = new Hotel ("Ibis", "10 rue de la gare", "67200", "STRASBOURG", 30, "****");
-        $ch3 = new Chambre (1, 250, 2, true, "disponible", $h3);   
-        $ch1 = new Chambre (15, 250, 2, true, "disponible", $h1);   
-        $ch2 = new Chambre (15, 250, 2, true, "disponible", $h1);   
-        $ch3 = new Chambre (29, 250, 2, true, "disponible", $h2);   
+        $ch3 = new Chambre (1, 250, 2, true, false, $h3);   
+        $ch1 = new Chambre (15, 250, 2, true, true, $h1);   
+        $ch2 = new Chambre (17, 250, 2, true, true, $h1);   
+        $ch4 = new Chambre (24, 250, 2, true, true, $h2);   
+        $ch5 = new Chambre (21, 250, 2, true, true, $h2);   
+        $ch6 = new Chambre (20, 250, 2, true, true, $h2);   
+        $ch7 = new Chambre (27, 250, 2, true, true, $h2);   
+        $ch8 = new Chambre (22, 250, 2, true, true, $h2);   
+        $ch9 = new Chambre (2, 250, 2, true, true, $h2);   
 
         $c1 = new Client ("GIBELLO", "Virgile");
         $c2 = new Client ("micka", "JEAN");
@@ -31,8 +36,15 @@
         echo $ch2->getInfoReservation();
         echo $r1->getDateReservation() . "<br>";
 
+        echo $h3->afficheDispoChambre() . "<br>";
+        // echo "<pre>";  
+        // print_r ($h2->afficheDispoChambre());
+        // print_r ($h1->afficheDispoChambre());
 
-        // var_dump($ch2->getVerificationStatutChambre(15));
+        
+
+
+       
 
 
 
