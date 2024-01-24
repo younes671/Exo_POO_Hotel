@@ -135,9 +135,6 @@
                 return  "Chambre : " . $this . " (" . $this->nbLit . " lits - " . $this->prixChambre . " € - Wifi : " . $this->optionChambre;
                }
 
-               public function totalPrixReservationChambre(){
-                return 
-               }
 
                public function __toString(){
                     return $this->numChambre;

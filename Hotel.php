@@ -154,26 +154,26 @@
 
           public function afficheDispoChambre(){
                $dispoChambre = "<table border='1px'>
-               <thead>
-                   <tr>
-                       <th>CHAMBRE</th>
-                       <th>PRIX</th>
-                       <th>WIFI</th>
-                       <th>ETAT</th>
-                   </tr>
-               </thead>
-               <tbody>";
+                                   <thead>
+                                   <tr>
+                                        <th>CHAMBRE</th>
+                                        <th>PRIX</th>
+                                        <th>WIFI</th>
+                                        <th>ETAT</th>
+                                   </tr>
+                                   </thead>
+                              <tbody>";
                foreach($this->chambresHotel as $chambre){
                     
                    $dispoChambre .= "<tr>
                    
-                   <td>Chambre " . $chambre->getNumChambre() . "</td>
-                   <td>" . $chambre->getPrixChambre() . "</td>
-                   <td>" . $chambre->getOptionChambre() . "</td>
-                   <td>" . $chambre = (count($chambre->getReservationChambres()) > 0
-                   ) ? "<span class ='red'>RESERVEE</span>":"<span class = 'green'>DISPONIBLE</span></td>
-                     
-                 </tr>";
+                                        <td>Chambre " . $chambre->getNumChambre() . "</td>
+                                        <td>" . $chambre->getPrixChambre() . "</td>
+                                        <td>" . $chambre->getOptionChambre() . "</td>
+                                        <td>" . $chambre = (count($chambre->getReservationChambres()) > 0
+                                        ) ? "<span class ='red'>RESERVEE</span>":"<span class = 'green'>DISPONIBLE</span></td>
+                                             
+                                    </tr>";
                        
                } 
                $dispoChambre .= "</tbody></table>"; 
@@ -182,9 +182,9 @@
 
           
    
-            public function __toString(){
-                        return "<b>" . $this->enseigne . " " . $this->nbEtoile . " " . $this->ville . "</b><br>"; 
+          public function __toString(){
+                return "<b>" . $this->enseigne . " " . $this->nbEtoile . " " . $this->ville . "</b><br>"; 
                         
-            }
+          }
 
         }

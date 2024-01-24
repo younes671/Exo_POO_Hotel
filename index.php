@@ -37,14 +37,12 @@
         echo $r1->getDateReservation() . "<br><br><br>";
         echo $h2->affichageInfoHotel() . "<br>";
 
-        echo $c1->afficherTitreRubriqueClient() . "<br>";
-        echo $h1->getNomHotel() . $ch1->afficherInfoChambreReservee();
+        echo $c1->afficherTitreRubriqueClient();
+        echo $h1->getNomHotel(); 
         echo $ch1->afficherInfoChambreReservee();
 
         echo $h2->afficheDispoChambre() . "<br>";
-        // echo "<pre>";  
-        // print_r ($h2->afficheDispoChambre());
-        // print_r ($h1->afficheDispoChambre());
+        
 
         
 

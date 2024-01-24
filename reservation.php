@@ -29,6 +29,10 @@
                 return $this;
             }
 
+            public function getInfo(){
+                return $this->client . $this->chambre;
+            }
+
             public function __toString(){
                 return " du " . $this->dateReservationDebut->format('d-m-Y') . " au " . $this->dateReservationFin->format('d-m-Y'); 
             }
