@@ -11,15 +11,15 @@
         $ch3 = new Chambre (1, 250, 2, true, false, $h3);   
         $ch1 = new Chambre (15, 250, 2, true, true, $h1);   
         $ch2 = new Chambre (17, 250, 2, true, true, $h1);   
-        $ch4 = new Chambre (24, 250, 2, true, true, $h2);   
-        $ch5 = new Chambre (21, 250, 2, true, true, $h2);   
-        $ch6 = new Chambre (20, 250, 2, true, true, $h2);   
-        $ch7 = new Chambre (27, 250, 2, true, true, $h2);   
-        $ch8 = new Chambre (22, 250, 2, true, true, $h2);   
+        $ch4 = new Chambre (24, 140, 2, true, false, $h2);   
+        $ch5 = new Chambre (21, 180, 2, true, true, $h2);   
+        $ch6 = new Chambre (20, 125, 2, true, true, $h2);   
+        $ch7 = new Chambre (27, 120, 2, true, true, $h2);   
+        $ch8 = new Chambre (22, 99, 2, true, true, $h2);   
         $ch9 = new Chambre (2, 250, 2, true, true, $h2);   
 
         $c1 = new Client ("GIBELLO", "Virgile");
-        $c2 = new Client ("micka", "JEAN");
+        $c2 = new Client ("JEAN", "Micka");
         $r1 = new Reservation("10/10/2023", "10/10/2023", $c1, $ch1 );
         // $r2 = new Reservation("15/01/2023", "15/01/2023", $c2, $ch2 );
 
@@ -34,9 +34,14 @@
         echo $r1->getDateReservation() . "<br>";
         echo $c2->afficherInfoClient();
         echo $ch2->getInfoReservation();
-        echo $r1->getDateReservation() . "<br>";
+        echo $r1->getDateReservation() . "<br><br><br>";
+        echo $h2->affichageInfoHotel() . "<br>";
 
-        echo $h3->afficheDispoChambre() . "<br>";
+        echo $c1->afficherTitreRubriqueClient() . "<br>";
+        echo $h1->getNomHotel() . $ch1->afficherInfoChambreReservee();
+        echo $ch1->afficherInfoChambreReservee();
+
+        echo $h2->afficheDispoChambre() . "<br>";
         // echo "<pre>";  
         // print_r ($h2->afficheDispoChambre());
         // print_r ($h1->afficheDispoChambre());

@@ -2,7 +2,6 @@
         class Client {
             private string $nom;
             private string $prenom;
-            // private DateTime $dateReservation;
             private array $reservationClients;
             
            
@@ -30,40 +29,32 @@
              public function setPrenom($prenom): string {
                  return $this->prenom = $prenom;
              }
-             
-
-            
-         
-             
-
-
-
+  
               public function addClient(Reservation $reservationClients){
                   $this->reservationClients[] = $reservationClients;
-             }
+              }
+
+              // Affiche Info Client 
 
              public function afficherInfoClient(){
                return  $this . " - ";
      
              }
 
+            //  Affiche Titre rubrique  
+
+            public function afficherTitreRubriqueClient(){
+              return "<b>Réservation de " . $this . "<br>";
+    
+            }
+
+           
+
 
              public function __toString(){
                return $this->prenom . " " . $this->nom;
              }
 
-             public function afficherreservclient(){
-               $result = "<h1>Information client : " . $this . " ans</h1><br><ul>";
-
-               foreach($this->reservationClients as $reservationClient){
-                   $result .= "<li><b>" . $reservationClient . "</b></li><br>";
-               }
-               $result .= "</ul>";
-               return $result;
-          }
-               
-
-             
         }
 
 

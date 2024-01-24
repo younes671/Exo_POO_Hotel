@@ -131,6 +131,10 @@
                     
                }
 
+               public function afficherInfoChambreReservee(){
+                return $this->$this->getNomHotel . "/Chambre : " . $this . " (" . $this->nbLit . " lits - " . $this->prixChambre . " € - Wifi : " . $this->optionChambre;
+               }
+
                public function __toString(){
                     return $this->numChambre;
                }

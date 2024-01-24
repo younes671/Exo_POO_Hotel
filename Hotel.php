@@ -139,6 +139,8 @@
                 return "Nombre chambres réservées : " . $result . "<br> Nombre chambres dispo : " . $this->nbChambre - $result;
            }
 
+          
+
           //  Affiche état chambre 
 
            public function afficheNumeroChambre(){
@@ -148,24 +150,37 @@
                
           }
 
-          // public function afficheDispoChambre(){
-          //      if($this->getStatutChambre()){
-          //           echo "DISPONIBLE";
-          //      }elseif($this->getStatutChambre() == false){
-          //           echo "RESERVEE";
-          //      }
-          // }
-
-          
+          // Affiche état chambre 
 
           public function afficheDispoChambre(){
+               $dispoChambre = "<table border='1px'>
+               <thead>
+                   <tr>
+                       <th>CHAMBRE</th>
+                       <th>PRIX</th>
+                       <th>WIFI</th>
+                       <th>ETAT</th>
+                   </tr>
+               </thead>
+               <tbody>";
                foreach($this->chambresHotel as $chambre){
-                       $dispoChambre = (count($chambre->getReservationChambres()) > 0) ? "<span class ='red'>RESERVEE</span>":"<span class = 'green'>DISPONIBLE</span>";
-                       echo $dispoChambre;
+                    
+                   $dispoChambre .= "<tr>
+                   
+                   <td>Chambre " . $chambre->getNumChambre() . "</td>
+                   <td>" . $chambre->getPrixChambre() . "</td>
+                   <td>" . $chambre->getOptionChambre() . "</td>
+                   <td>" . $chambre = (count($chambre->getReservationChambres()) > 0
+                   ) ? "<span class ='red'>RESERVEE</span>":"<span class = 'green'>DISPONIBLE</span></td>
+                     
+                 </tr>";
+                       
                } 
-               
+               $dispoChambre .= "</tbody></table>"; 
+               return $dispoChambre;
           }
 
+          
    
             public function __toString(){
                         return "<b>" . $this->enseigne . " " . $this->nbEtoile . " " . $this->ville . "</b><br>"; 
