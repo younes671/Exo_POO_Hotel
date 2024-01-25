@@ -91,11 +91,7 @@
                }
 
                public function getInfoWifi(){
-                    if($this->optionChambre){
-                        echo "oui";
-                    }else{
-                        echo "non";
-                    }
+                  echo $this->optionChambre === true ? "oui" : "non";
                }
 
                public function afficherStatutChambre(){
@@ -119,27 +115,26 @@
 
                public function getInfoReservation(){
                       
-                      return " Chambre " . $this . " - ";
+                      return  $this ;
                            
                 }
 
-                
-
+               
+                public function afficherInfoChambre(){
+                     return $this;
+                     
+                }
             
-               public function afficherInfoChambre(){
-                    return $this;
-                    
-               }
-
-               public function afficherInfoChambreReservee(){
-                return  "Chambre : " . $this . " (" . $this->nbLit . " lits - " . $this->prixChambre . " € - Wifi : " . $this->optionChambre;
-               }
-
-
-               public function __toString(){
-                    return $this->numChambre;
-               }
-
+                
+                public function afficherInfoChambreReservee(){
+                    return  "Chambre : " . $this . " (" . $this->nbLit . " lits - " . $this->prixChambre . " € - Wifi : " . $this->optionChambre;
+                }
+                
+                
+                public function __toString(){
+                    return " / Chambre : " . $this->numChambre . " (" . $this->nbLit . " lits - " . $this->prixChambre . " € - Wifi : " . ($this->optionChambre > 0 ? "oui" : "non") . ") - ";
+                }
+                
                
 
 

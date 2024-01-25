@@ -21,7 +21,7 @@
         $c1 = new Client ("GIBELLO", "Virgile");
         $c2 = new Client ("JEAN", "Micka");
         $r1 = new Reservation("10/10/2023", "10/10/2023", $c1, $ch1 );
-        // $r2 = new Reservation("15/01/2023", "15/01/2023", $c2, $ch2 );
+        
 
         echo $h1->getInfoHotel() . "<br><br>";
         echo $h2->getInfoHotel() . "<br><br>";
@@ -35,16 +35,19 @@
         echo $c2->afficherInfoClient();
         echo $ch2->getInfoReservation();
         echo $r1->getDateReservation() . "<br><br><br>";
-        echo $h2->affichageInfoHotel() . "<br>";
+        echo $h2->affichageInfoHotel() . "<br><br>";
 
-        echo $c1->afficherTitreRubriqueClient();
+        echo $c1->afficherTitreRubriqueClient() . "<br><br>";
         echo $h1->getNomHotel(); 
-        echo $ch1->afficherInfoChambreReservee();
-
+        echo $c1->afficherReservationClient(). "<br><br><br>";
         echo $h2->afficheDispoChambre() . "<br>";
         
 
-        
+
+       
+
+      
+
 
 
        

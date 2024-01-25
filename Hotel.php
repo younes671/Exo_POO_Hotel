@@ -141,7 +141,7 @@
 
           
 
-          //  Affiche état chambre 
+          //  Affiche num chambre 
 
            public function afficheNumeroChambre(){
                foreach($this->chambresHotel as $chambreHotel){
@@ -169,7 +169,7 @@
                    
                                         <td>Chambre " . $chambre->getNumChambre() . "</td>
                                         <td>" . $chambre->getPrixChambre() . "</td>
-                                        <td>" . $chambre->getOptionChambre() . "</td>
+                                        <td>" . ($chambre->getOptionChambre() > 0 ? "oui" : "non") . "</td>
                                         <td>" . $chambre = (count($chambre->getReservationChambres()) > 0
                                         ) ? "<span class ='red'>RESERVEE</span>":"<span class = 'green'>DISPONIBLE</span></td>
                                              

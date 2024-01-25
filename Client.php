@@ -24,11 +24,19 @@
            
            
              public function setNom($nom): string {
-                 return $this->nom = $nom;
-             }
-             public function setPrenom($prenom): string {
-                 return $this->prenom = $prenom;
-             }
+               return $this->nom = $nom;
+              }
+              public function setPrenom($prenom): string {
+                return $this->prenom = $prenom;
+              }
+              public function getReservationClients(){
+                          return $this->reservationClients;
+              }
+  
+             
+              public function setReservationClients($reservationClients){
+                          $this->reservationClients = $reservationClients;
+              }
   
               public function addClient(Reservation $reservationClients){
                   $this->reservationClients[] = $reservationClients;
@@ -37,7 +45,7 @@
               // Affiche Info Client 
 
              public function afficherInfoClient(){
-               return  $this . " - ";
+               return  $this;
      
              }
 
@@ -48,13 +56,25 @@
     
             }
 
+            // Affiche reservation client 
+
+            public function afficherReservationClient(){
+              
+              foreach($this->reservationClients as $reservationClient){
+                   
+                  echo $reservationClient->getChambre();
+              } 
+              
+              return $reservationClient;
+            }
+
            
-
-
              public function __toString(){
                return $this->prenom . " " . $this->nom;
              }
 
+
+           
         }
 
 
