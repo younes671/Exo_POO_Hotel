@@ -12,7 +12,7 @@
                 $this->chambre = $chambre;
                 $this->client->addClient($this);
                 $this->chambre->addReservationChambre($this);
-
+                $this->chambre->getHotel()->addReservationHotel($this);
             }
 
             public function getDateReservationDebut(): DateTime {return $this->dateReservationDebut;}
@@ -32,6 +32,13 @@
             public function getInfo(){
                 return $this->client . $this->chambre;
             }
+
+            public function getNbJourReserve(){
+                $result = $this->dateReservationFin->diff($this->dateReservationDebut);
+                return $result->d;
+            }
+
+           
 
             public function __toString(){
                 return " du " . $this->dateReservationDebut->format('d-m-Y') . " au " . $this->dateReservationFin->format('d-m-Y'); 

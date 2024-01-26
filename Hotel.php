@@ -7,6 +7,7 @@
             private int $nbChambre;
             private string $nbEtoile;
             private array $chambresHotel;
+            private array $reservationHotels;
             
 
             public function __construct(string $enseigne, string $adresse, string $cp, string $ville, int $nbChambre, string $nbEtoile){
@@ -17,6 +18,7 @@
                     $this->nbChambre = $nbChambre;
                     $this->nbEtoile = $nbEtoile;
                     $this->chambresHotel = [];
+                    $this->reservationHotels = [];
                    
 
             }
@@ -88,10 +90,21 @@
                         $this->chambresHotel = $chambresHotel;
             }
 
+            public function addReservationHotel(Reservation $reservationHotels){
+               $this->reservationHotels[] = $reservationHotels;
+          }
+
             
             public function addChambresHotel(Chambre $chambresHotel){
                 $this->chambresHotel[] = $chambresHotel;
            }
+
+           public function getNbReservationHotel(){
+               foreach($this->reservationHotels  as $reservationHotel){
+                 $reservationHotel = count($this->reservationHotels);
+               }
+               return "<span class='text-bg-success'>" . $reservationHotel . " RESERVATIONS</span>";
+             }
 
           //  Affiche la disponibilité des chambres de l'hotel
 
@@ -106,13 +119,13 @@
           //  Affiche titre rubrique 
 
            public function affichageInfoHotel(){
-                echo "<b>Réservations de l'hôtel " . $this . "</b><br>";
+                return "<b>Réservations de l'hôtel " . $this . "</b>";
            }
 
           //  Affiche nom hotel 
 
            public function getNomHotel(){
-                echo $this;
+                return $this;
            }
 
           //  Affiche détail de l'hotel
@@ -153,7 +166,7 @@
           // Affiche état chambre 
 
           public function afficheDispoChambre(){
-               $dispoChambre = "<table border='1px'>
+               $dispoChambre = "<table class='table table-striped'>
                                    <thead>
                                    <tr>
                                         <th>CHAMBRE</th>
@@ -164,14 +177,13 @@
                                    </thead>
                               <tbody>";
                foreach($this->chambresHotel as $chambre){
-                    
+                    $statut = (count($chambre->getReservationChambres()) > 0) ? "<span class='text-bg-danger'>RESERVEE</span>":"<span class='text-bg-success'>DISPONIBLE</span>";
                    $dispoChambre .= "<tr>
                    
                                         <td>Chambre " . $chambre->getNumChambre() . "</td>
                                         <td>" . $chambre->getPrixChambre() . "</td>
-                                        <td>" . ($chambre->getOptionChambre() > 0 ? "oui" : "non") . "</td>
-                                        <td>" . $chambre = (count($chambre->getReservationChambres()) > 0
-                                        ) ? "<span class ='red'>RESERVEE</span>":"<span class = 'green'>DISPONIBLE</span></td>
+                                        <td>" . $chambre->getInfoWifi() . "</td>
+                                        <td>$statut</td>
                                              
                                     </tr>";
                        
@@ -180,10 +192,27 @@
                return $dispoChambre;
           }
 
+          // Affiche reservation Hotel 
+
+          public function afficherReservationHotel(){
+               $result = "<b>Réservation de l'hôtel " . $this . "</b><br>" . $this->getNbReservationHotel();
+               
+               foreach($this->reservationHotels as $reservationHotel){
+                    $result .= 
+                    "<br>" . $reservationHotel->getClient()->afficherInfoClient() .
+                    " - Chambre : " . $reservationHotel->getChambre()->getNumChambre() 
+                    . $reservationHotel->getDateReservation();   
+               } 
+                      
+                            
+               
+               return $result;
+             }
+
           
    
           public function __toString(){
-                return "<b>" . $this->enseigne . " " . $this->nbEtoile . " " . $this->ville . "</b><br>"; 
+                return "<b>" . $this->enseigne . " " . $this->nbEtoile . " " . $this->ville . "</b>"; 
                         
           }
 

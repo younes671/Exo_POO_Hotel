@@ -1,7 +1,7 @@
 <?php
             class Chambre {
                 private int $numChambre;
-                private int $prixChambre;
+                private float $prixChambre;
                 private int $nbLit;
                 private bool $optionChambre;
                 private bool $statutChambre;
@@ -9,7 +9,7 @@
                 private array $reservationChambres;
                 
 
-                public function __construct(int $numChambre, int $prixChambre, int $nbLit, bool $optionChambre, bool $statutChambre, Hotel $hotel){
+                public function __construct(int $numChambre, float $prixChambre, int $nbLit, bool $optionChambre, bool $statutChambre, Hotel $hotel){
                     $this->numChambre = $numChambre;
                     $this->prixChambre = $prixChambre;
                     $this->nbLit = $nbLit;
@@ -25,7 +25,7 @@
                     return $this->numChambre;
                 }
 
-                public function getPrixChambre(): int {
+                public function getPrixChambre(): float {
                     return $this->prixChambre;
                 }
                 
@@ -52,7 +52,7 @@
                     return $this->numChambre = $numChambre;
                 }
 
-                public function setPrixChambre($prixChambre): int {
+                public function setPrixChambre($prixChambre): float {
                     return $this->prixChambre = $prixChambre;
                 }
 
@@ -91,48 +91,29 @@
                }
 
                public function getInfoWifi(){
-                  echo $this->optionChambre === true ? "oui" : "non";
+                  return $this->optionChambre ? "oui" : "non";
                }
-
-               public function afficherStatutChambre(){
-                if($this->hotel == $this->numChambre){
-                    echo "RESERVEE";
-                }else{
-                    echo "DISPONIBLE";
-                }
-           }
-
-           public function getVerificationStatutChambre($numChambre){
-                    foreach($this->reservationChambres as $numChambre){
-                         return $numChambre;
-                    }
-                    if($numChambre === $this->numChambre){
-                        echo "La chambre est déjà réservée ! ";
-                     }else{
-                        echo "La chambre est disponible";
-                     }
-           }
 
                public function getInfoReservation(){
                       
                       return  $this ;
                            
-                }
+              }
 
                
-                public function afficherInfoChambre(){
+               public function afficherInfoChambre(){
                      return $this;
                      
                 }
             
                 
-                public function afficherInfoChambreReservee(){
-                    return  "Chambre : " . $this . " (" . $this->nbLit . " lits - " . $this->prixChambre . " € - Wifi : " . $this->optionChambre;
+               public function afficherInfoChambreReservee(){
+                    return  $this . " (" . $this->nbLit . " lits - " . $this->prixChambre . " € - Wifi : " . $this->getInfoWifi() . ")";
                 }
-                
-                
-                public function __toString(){
-                    return " / Chambre : " . $this->numChambre . " (" . $this->nbLit . " lits - " . $this->prixChambre . " € - Wifi : " . ($this->optionChambre > 0 ? "oui" : "non") . ") - ";
+
+        
+               public function __toString(){
+                    return " / Chambre : " . $this->numChambre . " (" . $this->nbLit . " lits - " . $this->prixChambre . " € - Wifi : " . $this->optionChambre;
                 }
                 
                

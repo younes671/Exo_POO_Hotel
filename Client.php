@@ -52,20 +52,46 @@
             //  Affiche Titre rubrique  
 
             public function afficherTitreRubriqueClient(){
-              return "<b>Réservation de " . $this . "<br>";
+              return "<b>Réservation de " . $this . "</b>";
     
             }
 
             // Affiche reservation client 
 
             public function afficherReservationClient(){
-              
+              $result = "<b>Réservation de " . $this . "</b><br>" . $this->getNbReservation();
               foreach($this->reservationClients as $reservationClient){
                    
-                  echo $reservationClient->getChambre();
-              } 
+                    $result .= 
+                    "<br><b>Hotel : </b>" . $reservationClient->getChambre()->getHotel() 
+                    . $reservationClient->getChambre()->afficherInfoChambreReservee() 
+                    . $reservationClient->getDateReservation() . " <br> "; 
+                  } 
+
+                  $result .= $reservationClient->getClient()->afficherTotaleReservation();
+                    
+                    
+                    return $result;
+            }
+                          
+                          
+
+            // Affiche nb reservation 
+
+            public function getNbReservation(){
+              foreach($this->reservationClients  as $nbReservation){
+                $nbReservation = count($this->reservationClients);
+              }
+              return "<span class='text-bg-success'>" . $nbReservation . " RESERVATIONS</span>";
+            }
+
+            public function afficherTotaleReservation(){
+                $total = 0;
+                foreach($this->reservationClients  as $reservation){
+                    $total += $reservation->getNbJourReserve() * $reservation->getChambre()->getPrixChambre(); 
+                }
               
-              return $reservationClient;
+                return "Total : " . $total . " € ";
             }
 
            
